@@ -24,6 +24,17 @@ functions:
           path: /todos
           method: post
           cors: true
+  deleteTodo:
+    handler: src/functions/deleteTodo/main.handler
+    events:
+      - http:
+          path: /todos/{id}
+          method: delete
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
 
 plugins:
   - serverless-plugin-typescript
