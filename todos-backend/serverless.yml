@@ -35,6 +35,17 @@ functions:
             parameters:
               paths:
                 id: true
+  editTodo:
+    handler: src/functions/editTodo/main.handler
+    events:
+      - http:
+          path: /todos/{id}
+          method: patch
+          cors: true
+          request:
+            parameters:
+              paths:
+                id: true
 
 plugins:
   - serverless-plugin-typescript
