@@ -1,0 +1,22 @@
+service: todos-backend
+
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  memorySize: 128
+  region: ap-southeast-1
+  stage: ${opt:stage, 'dev'}
+
+functions:
+  hello:
+    handler: src/functions/hello/main.handler
+    events:
+      - http:
+          path: /hello
+          method: get
+          cors: true
+
+plugins:
+  - serverless-plugin-typescript
