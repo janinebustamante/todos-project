@@ -46,6 +46,13 @@ functions:
             parameters:
               paths:
                 id: true
+  listTodos:
+    handler: src/functions/listTodos/main.handler
+    events:
+      - http:
+          path: /todos
+          method: get
+          cors: true
 
 plugins:
   - serverless-plugin-typescript
