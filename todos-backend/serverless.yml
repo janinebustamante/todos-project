@@ -8,6 +8,14 @@ provider:
   memorySize: 128
   region: ap-southeast-1
   stage: ${opt:stage, 'dev'}
+  iam:
+    role:
+      statements:
+        # Only allow to a specific dynamo db table
+        - Effect: Allow
+          Resource: !Sub "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/${self:service}-${self:provider.stage}"
+          Action:
+            - "dynamodb:*"
 
 functions:
   hello:
@@ -15,6 +23,10 @@ functions:
     events:
       - http:
           path: /hello
+          method: get
+          cors: true
+      - http:
+          path: /hello-world
           method: get
           cors: true
   createTodo:

@@ -1,6 +1,9 @@
 {
   "name": "todos-backend",
-  "dependencies": {},
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.121.0",
+    "@aws-sdk/lib-dynamodb": "^3.121.0"
+  },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.101",
     "serverless-plugin-typescript": "^2.1.2",
